@@ -25,7 +25,8 @@ sns.heatmap(matrix_corr,
             xticklabels = matrix_corr.columns,
             yticklabels = matrix_corr.columns , cmap = 'YlGnBu' )
 
-# 
+# creating new column
 df['total acidity'] = df['fixed acidity'] + df['volatile acidity']
+
 
 
