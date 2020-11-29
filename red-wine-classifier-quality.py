@@ -13,3 +13,19 @@ from sklearn.metrics import *
 from sklearn.svm import SVC
 from sklearn.neural_network import MLPRegressor
 from xgboost import XGBRegressor
+
+# importing dataset
+df = pd.read_csv('winequality-red.csv' , sep =',')
+
+# creating a correlation matrix
+matrix_corr = df.corr()
+
+# plotting a correlation matrix in heatmap
+sns.heatmap(matrix_corr,
+            xticklabels = matrix_corr.columns,
+            yticklabels = matrix_corr.columns , cmap = 'YlGnBu' )
+
+# 
+df['total acidity'] = df['fixed acidity'] + df['volatile acidity']
+
+
