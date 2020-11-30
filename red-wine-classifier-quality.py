@@ -105,3 +105,19 @@ df['PCA8'] = pca_8
 matrix_corr = df.corr()
 matrix_corr = matrix_corr['quality'].sort_values(ascending=False)
 
+# choosing best features
+features = df[['PCA2','PCA3','alcohol','volatile acidity','sulphates',
+               'citric acid','total sulfur dioxide','density','chlorides',
+               'fixed acidity','PCA1','PCA4','PCA5','PCA6',
+               'PCA7','PCA8','total acidity','pH']]
+
+# spliting dataset in test and train
+train_features, test_features, train_labels, test_labels = train_test_split(features , label, 
+                                                                            test_size = 0.20, 
+                                                                            random_state = 0)
+
+# creating dict to find best params of Random Forest
+param_grid = [{'n_estimators':[40,45,50,55,60,70,100,150,200,250,300],
+               'max_depth':[12,13,15,16,17,18,19,20,22,25,30,35,40,50,60,80,100,130,150,180,200,220],
+               'criterion':['gini','entropy']}]
+
