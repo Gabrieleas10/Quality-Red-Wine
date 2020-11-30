@@ -121,3 +121,8 @@ param_grid = [{'n_estimators':[40,45,50,55,60,70,100,150,200,250,300],
                'max_depth':[12,13,15,16,17,18,19,20,22,25,30,35,40,50,60,80,100,130,150,180,200,220],
                'criterion':['gini','entropy']}]
 
+# creating classifier
+clf = RandomForestClassifier()
+
+#
+gs = GridSearchCV(clf, param_grid = param_grid, scoring='accuracy', cv=3)
