@@ -10,8 +10,6 @@ from sklearn.preprocessing import *
 from sklearn.ensemble import *
 from sklearn.decomposition import PCA
 from sklearn.metrics import *
-from sklearn.svm import SVC
-from sklearn.neural_network import MLPRegressor
 
 # importing dataset
 df = pd.read_csv('winequality-red.csv' , sep =',')
