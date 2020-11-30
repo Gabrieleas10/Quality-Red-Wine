@@ -117,8 +117,8 @@ train_features, test_features, train_labels, test_labels = train_test_split(feat
                                                                             random_state = 0)
 
 # creating dict to find best params of Random Forest
-param_grid = [{'n_estimators':[40,45,50,55,60,70,100,150,200,250,300],
-               'max_depth':[12,13,15,16,17,18,19,20,22,25,30,35,40,50,60,80,100,130,150,180,200,220],
+param_grid = [{'n_estimators':[40,45,50,55,60,70,100,150,200,250,300,350,400,450,500],
+               'max_depth':[10,11,12,13,15,16,17,18,19,20,22,25,30,35,40,50,60],
                'criterion':['gini','entropy']}]
 
 # creating classifier
@@ -126,4 +126,21 @@ clf = RandomForestClassifier()
 
 # creating exhaustive search over specified parameter values for an estimator
 gs = GridSearchCV(clf, param_grid = param_grid, scoring='accuracy', cv=3)
+
+# trainning and evaluating the best params  
+gs.fit(train_features, train_labels)
+
+# creating classifier with best params
+clf = RandomForestClassifier(criterion = gs.best_params_['criterion'],
+                             max_depth = gs.best_params_['max_depth'],
+                             n_estimators = gs.best_params_['n_estimators'])
+
+# predictions of model
+predictions = clf.predict(test_features)
+
+# evaluating the model accuracy
+acc = sklearn.metrics.accuracy_score(test_labels, predictions)
+
+
+
 
