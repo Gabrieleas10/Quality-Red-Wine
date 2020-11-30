@@ -124,5 +124,6 @@ param_grid = [{'n_estimators':[40,45,50,55,60,70,100,150,200,250,300],
 # creating classifier
 clf = RandomForestClassifier()
 
-#
+# creating exhaustive search over specified parameter values for an estimator
 gs = GridSearchCV(clf, param_grid = param_grid, scoring='accuracy', cv=3)
+
